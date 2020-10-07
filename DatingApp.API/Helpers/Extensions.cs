@@ -12,7 +12,7 @@ namespace DatingApp.API.Helpers
                 response.Headers.Add("Access-Control-Allow-Origin","*");
 
         }
-
+    
         public static int CalcuclateAge(this DateTime date)
         {
             int Age = DateTime.Today.Year - date.Year;

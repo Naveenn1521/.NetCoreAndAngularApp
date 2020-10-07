@@ -28,6 +28,10 @@ namespace DatingApp.API.Dtos
 
         public string PhotoUrl { get; set; }
 
+        public string LookingFor { get; set; }
+
+        public string Interests { get; set; }
+
         public ICollection<PhotosForDetailsDto> Photos { get; set; }
     }
 }
