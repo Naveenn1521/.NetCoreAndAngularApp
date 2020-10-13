@@ -13,14 +13,17 @@ import { NgForm } from '@angular/forms';
 })
 export class MemberEditComponent implements OnInit {
   user: User;
+  photoUrl: string;
   @ViewChild('editForm', { static: true }) editForm: NgForm;
   constructor(private route: ActivatedRoute, private alertifyService: AlertifyService
-    , private userService: UserService, private authService: AuthServiceService) { }
+    ,         private userService: UserService, private authService: AuthServiceService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
     });
+
+    this.authService.currentPhotoUrl.subscribe(photoUrl => this.photoUrl = photoUrl);
   }
 
   UpdateUser() {
@@ -30,6 +33,10 @@ export class MemberEditComponent implements OnInit {
     }, error => {
       this.alertifyService.error(error);
     });
+  }
+
+  updateMainPhoto(photoUrl) {
+    this.user.photoUrl = photoUrl;
   }
 
 }
