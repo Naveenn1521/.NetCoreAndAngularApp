@@ -21,7 +21,7 @@ galleryImages: NgxGalleryImage[];
   ngOnInit() {
     this.route.data.subscribe(data => {
       this.user = data['user'];
-      // console.log(this.user);
+      console.log(this.user);
     });
 
     this.galleryOptions = [
