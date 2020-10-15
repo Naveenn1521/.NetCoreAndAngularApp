@@ -21,7 +21,7 @@ currentPhotoUrl = this.photoUrl.asObservable();
 
 changeMemberPhoto(photoUrl: string) {
   this.photoUrl.next(photoUrl);
-} 
+}
 
   login(model: any) {
     return this.http.post(this.baseUrl + 'login', model)
@@ -44,7 +44,7 @@ changeMemberPhoto(photoUrl: string) {
     return !this.jwtHelper.isTokenExpired(token);
   }
 
-  register(model: any) {
-   return this.http.post(this.baseUrl + 'register', model);
+  register(user: User) {
+   return this.http.post(this.baseUrl + 'register', user);
   }
 }
