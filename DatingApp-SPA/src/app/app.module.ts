@@ -31,6 +31,7 @@ import { MemberEditComponent } from './members/member-edit/member-edit.component
 import { PhotoEditorComponent } from './members/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
 import { TimeagoModule } from 'ngx-timeago';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 export function tokenGetterfn() {
   return localStorage.getItem('token');
@@ -69,6 +70,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     TabsModule.forRoot(),
     BsDatepickerModule.forRoot(),
     TimeagoModule.forRoot(),
+    PaginationModule.forRoot(),
     NgxGalleryModule,
     RouterModule.forRoot(appRoutes),
     JwtModule.forRoot({

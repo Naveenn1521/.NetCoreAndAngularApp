@@ -1,25 +1,34 @@
 using System;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 
 namespace DatingApp.API.Helpers
 {
     public static class Extensions
     {
-        public static void AddApplicationError(this HttpResponse response , string message)
+        public static void AddApplicationError(this HttpResponse response, string message)
         {
-                response.Headers.Add("Application-Error", message);
-                response.Headers.Add("Access-Control-Expose-Headers","Application-Error");
-                response.Headers.Add("Access-Control-Allow-Origin","*");
+            response.Headers.Add("Application-Error", message);
+            response.Headers.Add("Access-Control-Expose-Headers", "Application-Error");
+            response.Headers.Add("Access-Control-Allow-Origin", "*");
 
         }
-    
+
+        public static void Addpagination(this HttpResponse response, 
+                     int currentPage, int itemsPerPage, int totalItems, int totalPages)                  
+        {
+            var paginationHeader = new PaginationHeader(currentPage,itemsPerPage,totalItems,totalPages);
+            var camelCaseFormatter = new JsonSerializerSettings();
+            camelCaseFormatter.ContractResolver = new CamelCasePropertyNamesContractResolver();
+            response.Headers.Add("Pagination", JsonConvert.SerializeObject(paginationHeader,camelCaseFormatter));
+              response.Headers.Add("Access-Control-Expose-Headers", "Pagination");
+        }
+
         public static int CalcuclateAge(this DateTime date)
         {
             int Age = DateTime.Today.Year - date.Year;
-            // if(date.AddYears(Age) > DateTime.Now)
-            //     Age--;
-
-                return Age;
+            return Age;
         }
     }
 }
