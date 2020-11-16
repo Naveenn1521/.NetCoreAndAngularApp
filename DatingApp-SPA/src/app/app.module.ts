@@ -1,3 +1,4 @@
+import { ListsResolver } from './_resolvers/list.resolvers';
 import { PreventUnsavedChanges } from './_guards/prevent-unsaved-changes.guard';
 import { MemberEditResolver } from './_resolvers/member-edit.resolver';
 import { MemberDetailResolver } from './_resolvers/member-detail.resolver';
@@ -10,7 +11,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { AppComponent } from './app.component';
-import { ValueComponent } from './value/value.component';
+import { ValueComponent } from './value/value.component';''
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
@@ -88,6 +89,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MemberListResolver,
     MemberEditResolver,
     PreventUnsavedChanges,
+    ListsResolver,
     HammerModule,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
   ],
